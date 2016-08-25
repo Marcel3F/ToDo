@@ -19,7 +19,7 @@ namespace ToDo.ViewModel
                 ID = updateID
             };
 
-            App.Database.SaveToDo(newToDo);
+            App.Database.SaveToDo(newToDo); 
         }
 
         public DateTime SetDueDate(DateTime date, int hours, int minutes, int seconds)
