@@ -2,29 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using ToDo.Data;
 using Xamarin.Forms;
 
 namespace ToDo
 {
     public class App : Application
     {
+        private static ToDoDatabase database;
+        public static ToDoDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                    database = new ToDoDatabase();
+                return database;
+            }
+        }
+
         public App()
         {
             // The root page of your application
-            MainPage = new ContentPage
-            {
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-                            HorizontalTextAlignment = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        }
-                    }
-                }
-            };
+            MainPage = new NavigationPage(new CreatePage());
         }
 
         protected override void OnStart()
